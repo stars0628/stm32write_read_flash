@@ -50,7 +50,9 @@ void STMFLASH_Write(uint32_t WriteAddr, uint32_t *pBuffer, uint32_t Num)
     addrx = WriteAddr;             //写入的起始地址
     endaddr = WriteAddr + Num * 4; //写入的结束地址
 
-    if (addrx < 0X080C1000)
+		//if后的为清除扇区操作
+		//因为Flash的编程原理都是只能将1写为0，而不能将0写为1，所以在进行Flash编程之前，必须将对应的块擦除，而擦除的过程就是把所有位都写为1的过程，块内的所有字节变为0xFF
+    if (addrx < BOARD_NUM_ADDR)
     {
         while (addrx < endaddr)
         {

@@ -2,7 +2,7 @@
 #define __FLASH_H
 #include "main.h"
 
-#define BOARD_NUM_ADDR 0x0800C000
+#define BOARD_NUM_ADDR 0x08100000 //0X08100000是最大的地址 stm32f4的flash是1024KB 100000H转二进制是1048576，除以1024，得1024Kbytes
 
 #define STM32_FLASH_BASE 0x08000000 //STM32 FLASH的起始地址
 #define FLASH_WAITETIME 50000       //FLASH等待超时时间
